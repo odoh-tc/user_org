@@ -26,6 +26,6 @@ def create_organisation_route(org: OrganisationCreate, db: Session = Depends(get
     return create_organisation(org, db, current_user)
 
 @router.post("/{orgId}/users")
-def add_user_to_organisation_route(orgId: str, userId: str, db: Session = Depends(get_db)):
+def add_user_to_organisation_route(orgId: str, userId: str, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     return add_user_to_organisation(orgId, userId, db)
 
